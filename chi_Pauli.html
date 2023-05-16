@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>&#967;<sup>Pauli</sup> calculator</h1>
+
+<hr></hr>
+
+
+
+
+
+<!--when I get around to making this formatted well: https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html-->
+
+
+<h2>Sample name:
+  <input type='text' size='100' id='sampleName' name='sampleName' value= ''/>
+</h2>
+  
+<p>
+  &emsp;&emsp;NMR shift: 
+  <input type='text' size='8' id='NMRshift' name='NMRshift' value= '?' onchange = "prepare_cal_values()"/> / ppm * mL * g<sup>-1</sup>
+</p>
+
+<p>
+  &emsp;&emsp;% mass core: 
+  <input type='text' size='8' id='coreFraction' name='coreFraction' value='?' onchange = "prepare_cal_values()"/> 
+  <span id = "f_coreAlert" style='background-color:#ff6347;'></span>
+</p>
+
+
+
+<p style="margin-top:1cm;"> # of metal elements:
+  <input type='number' size='1' id='metalNumRequested' name='metalNum' value='1' oninput = "update_number_of_selectors('metal')"/> &emsp;&emsp;
+  <b>
+    m<sub>e</sub>: <span id = "metal_prop1_ave"></span>&emsp;&emsp;
+    density:        <span id = "metal_prop2_ave"></span> g/mL &emsp;&emsp;
+    chi_vol:        <span id = "metal_prop3_ave"></span>
+  </b>
+</p>
+
+<span id = "metal_specifications"></span>
+
+
+
+<p style="margin-top:1cm;"> # of different solvents:
+  <input type='number' size='1' id='solventNumRequested' name='solventNum' value='1' oninput = "update_number_of_selectors('solvent')"/> &emsp;&emsp;
+  <b>
+    MW: <span id = "solvent_prop1_ave"></span> g/mol &emsp;&emsp;
+    density: <span id = "solvent_prop2_ave"></span> g/mL &emsp;&emsp;
+    chi_mol: <span id = "solvent_prop3_ave"></span> mol/g
+  </b>
+</p>
+
+<span id = "solvent_specifications"></span>
+
+
+
+<p style="margin-top:1cm;"> # of ligand types:
+  <input type='number' size='1' id='ligandNumRequested' name='ligandNum' value='1' oninput = "update_number_of_selectors('ligand')"/> &emsp;&emsp;
+  <b>
+    MW: <span id = "ligand_prop1_ave"></span> g/mol &emsp;&emsp;
+    density: <span id = "ligand_prop2_ave"></span> g/mL &emsp;&emsp;
+    chi_mol: <span id = "ligand_prop3_ave"></span> mol/g
+  </b>
+</p>
+
+<span id = "ligand_specifications"></span>
+
+
+
+<hr></hr>
+
+<p>
+  <span>
+    <mark style="background: #00ced1!important; display: inline-block; height: 1.5em; line-height: 1.25">
+    <b>&#967;<sup>Pauli</sup> =   <span id = "final_Pauli_chi_vol"></span>
+    </mark>
+  </p></b>
+  &emsp;&emsp;&emsp;    g(E<sub>F</sub>) = 
+  <span id = "final_DOS"></span>
+  </span>
+</p>
+<p> &#967;<sup>Landau</sup> =   <span id = "final_Landau_chi_vol"></span></p>
+<p> &#967;<sup>core</sup> =     <span id = "final_core_chi_vol"></span></p>
+<p> &#967;<sup>ligands</sup> =  <span id = "final_ligands_chi_vol"></span></p>
+<p > &#967;<sup>solvent</sup> = <span id = "final_solvent_chi_vol"></span></p>
+
+
+
+<hr></hr>
+
+<!-- <button type="button">Save Report</button> -->
+
+<p>The calculations follow the procedure described in the supplementary information of <a href="https://pubs.acs.org/doi/10.1021/acsnano.1c10877">ACS Nano 2022, 16, 3, 4479–4486</a>.</p>
+<p>Last revision: 4/29/2023</p>
+
+</body>
+
+<script src="chi_Pauli.js"></script>
+
+</html>
